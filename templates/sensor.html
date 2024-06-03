@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data - Grow Farmer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="static/scripts/cities.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+        }
+        header img {
+            width: 50px;
+            height: 50px;
+            margin-right: 1em;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 1em;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .sensor-display {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 2em;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .sensor-display h2 {
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: #4CAF50;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .sensor-display .sensor-data {
+            margin-bottom: 1em;
+        }
+        .sensor-display .sensor-data label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 0.5em;
+            display: block;
+        }
+        .sensor-display .sensor-data .value {
+            font-size: 1.5em;
+            color: #333;
+            background-color: #f2f2f2;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .sensor-display .sensor-data .value:hover {
+            background-color: #e5e5e5;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2em 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 1em;
+        }
+        footer .footer-content div {
+            margin: 1em;
+        }
+        footer .footer-content div h4 {
+            margin-bottom: 0.5em;
+        }
+        footer .footer-content div ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer .footer-content div ul li {
+            margin: 0.5em 0;
+        }
+        footer .footer-content div ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer .footer-content div ul li a:hover {
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="static/image/icon.jpg" alt="Grow Farmer Logo">
+            <h1>Grow Farmer</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('crop_recommendation')}}">Crop Recommendation</a></li>
+                <li><a href="{{url_for('fert_recommend')}}">Fertilizer Recommendation</a></li>
+                <li><a href="{{url_for('disease_prediction')}}">Plant Disease</a></li>
+                <li><a href="{{url_for('sensor_data')}}">Farmer Community</a></li>
+                <li><a href="{{url_for('sensor_data')}}">Sensor Data</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="sensor-display">
+            <h2>Sensor Data</h2>
+            <div class="sensor-data">
+                <label for="nitrogen">Nitrogen (N)</label>
+                <div class="value">{{ data[0] }} mg/kg</div>
+            </div>
+            <div class="sensor-data">
+                <label for="phosphorous">Phosphorous (P)</label>
+                <div class="value">{{ data[1] }} mg/kg</div>
+            </div>
+            <div class="sensor-data">
+                <label for="potassium">Potassium (K)</label>
+                <div class="value">{{ data[2] }}  mg/kg</div>
+            </div>
+            <div class="sensor-data">
+                <label for="moisture">Moisture</label>
+                <div class="value">{{ data[3] }} %</div>
+            </div>
+            <div class="sensor-data">
+                <label for="temperature">Temperature</label>
+                <div class="value">{{ data[4] }} °C</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: sanjeevlodhi642@gmail.com</li>
+                    <li>Phone: +917983758377</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('about_us')}}">About Us</a></li>
+                    <li><a href="{{url_for('home')}}">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

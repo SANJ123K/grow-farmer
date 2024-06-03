@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation - Grow Farmer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="static/scripts/cities.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+         a {
+        text-decoration:none;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+        }
+        header img {
+            width: 50px;
+            height: 50px;
+            margin-right: 1em;
+        }
+        header h1 {
+            margin: 0;
+            color:white;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 1em;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+.container {
+    width: 500px;
+    height:800px;
+    margin: 50px auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.chat-box {
+    height: 600px;
+    overflow-y: scroll;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    color:black;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        h1 b {
+            color: #007bff;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        i {
+            font-style: normal;
+            color: #28a745;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2em 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 1em;
+        }
+        footer .footer-content div {
+            margin: 1em;
+        }
+        footer .footer-content div h4 {
+            margin-bottom: 0.5em;
+        }
+        footer .footer-content div ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer .footer-content div ul li {
+            margin: 0.5em 0;
+        }
+        footer .footer-content div ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer .footer-content div ul li a:hover {
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="static/image/icon.jpg" alt="Grow Farmer Logo">
+            <h1>Grow Farmer</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('crop_recommendation')}}">Crop Recommendation</a></li>
+                <li><a href="{{url_for('fert_recommend')}}">Fertilizer Recommendation</a></li>
+                <li><a href="{{url_for('disease_prediction')}}">Plant Disease</a></li>
+                <li><a href="{{url_for('sensor_data')}}">Farmer Community</a></li>
+                <li><a href="{{url_for('sensor_data')}}">Sensor Data</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="chat-box" id="chat-box"></div>
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <script src="static/scripts/client.js"></script>
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: sanjeevlodhi642@gmail.com</li>
+                    <li>Phone: +917983758377</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('about_us')}}">About Us</a></li>
+                    <li><a href="{{url_for('home')}}">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

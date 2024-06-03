@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow Farmer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+        }
+        header img {
+            width: 50px;
+            height: 50px;
+            margin-right: 1em;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 1em;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .alltime
+        {
+        background-image:url("static/image/hero.webp");
+         background-repeat: no-repeat;
+         background-size:cover;
+        }
+        .hero {
+
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 20px;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        .hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding: 2em 0;
+        }
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1em;
+            padding: 2em;
+            width: 250px;
+            height:260px;
+            text-align: center;
+            transition: transform 0.2s;
+            cursor: pointer;
+            flex: 0 0 auto;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 1em;
+        }
+        .card h3 {
+            margin: 0.5em 0;
+        }
+        .card p {
+            color: #666;
+        }
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .scroll-btn.left {
+            left: 0;
+        }
+        .scroll-btn.right {
+            right: 0;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2em 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 1em;
+        }
+        footer .footer-content div {
+            margin: 1em;
+        }
+        footer .footer-content div h4 {
+            margin-bottom: 0.5em;
+        }
+        footer .footer-content div ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer .footer-content div ul li {
+            margin: 0.5em 0;
+        }
+        footer .footer-content div ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        footer .footer-content div ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="static/image/icon.jpg" alt="Grow Farmer Logo">
+            <h1>Grow Farmer</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('crop_recommendation')}}">Crop Recommendation</a></li>
+                <li><a href="{{url_for('fert_recommend')}}">Fertilizer Recommendation</a></li>
+                <li><a href="{{url_for('disease_prediction')}}">Plant Disease</a></li>
+                <li><a href="{{url_for('farmer_community')}}">Farmer Community</a></li>
+                <li><a href="{{url_for('sensor_data')}}">Sensor Data</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="alltime">
+    <div class="hero">
+        <h2>Empowering Farmers Across India</h2>
+        <p>Grow Farmer is dedicated to helping farmers maximize their crop yields and ensure sustainable farming practices with the latest technology and insights.</p>
+    </div>
+    <div class="container">
+        <button class="scroll-btn left" onclick="scrollLeft()">&lt;</button>
+        <div class="scroll-container">
+            <a href="{{url_for('crop_recommendation')}}">
+                <div class="card">
+                    <img src="static/image/crop_recommendation.jpg" alt="Crop Recommendation Icon">
+                    <h3>Crop Recommendation</h3>
+                    <p>Get the best crop recommendations based on your soil and climate.</p>
+                </div>
+            </a>
+            <a href="{{url_for('fert_recommend')}}">
+                <div class="card">
+                    <img src="static/image/fertilizer.jpg" alt="Fertilizer Recommendation Icon">
+                    <h3>Fertilizer Recommendation</h3>
+                    <p>Find out which fertilizers to use for optimal crop growth.</p>
+                </div>
+            </a>
+            <a href="{{url_for('disease_prediction')}}">
+                <div class="card">
+                    <img src="static/image/plant disease.jpg" alt="Plant Disease Icon">
+                    <h3>Plant Disease</h3>
+                    <p>Identify and treat plant diseases effectively.</p>
+                </div>
+            </a>
+            <a href="{{url_for('farmer_community')}}">
+                <div class="card">
+                    <img src="static/image/farmer_community.webp" alt="Farmer Community Icon">
+                    <h3>Farmer Community</h3>
+                    <p>Join the community of farmers and share your experiences.</p>
+                </div>
+            </a>
+            <a href="{{url_for('sensor_data')}}">
+                <div class="card">
+                    <img src="static/image/sensor_data.jpg" alt="Sensor Data Icon">
+                    <h3>Sensor Data</h3>
+                    <p>Monitor real-time data from sensors for better farm management.</p>
+                </div>
+            </a>
+        </div>
+        <button class="scroll-btn right" onclick="scrollRight()">&gt;</button>
+    </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: sanjeevlodhi642@gmail.com</li>
+                    <li>Phone: +917983758377</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('about_us')}}">About Us</a></li>
+                    <li><a href="{{url_for('home')}}">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function scrollLeft() {
+            document.querySelector('.scroll-container').scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollRight() {
+            document.querySelector('.scroll-container').scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+        }
+</script>
+</body>
+</html>

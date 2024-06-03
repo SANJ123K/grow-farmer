@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Grow Farmer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+        }
+        header img {
+            width: 50px;
+            height: 50px;
+            margin-right: 1em;
+        }
+        header h1 {
+            margin: 0;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 1em;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: #e74c3c;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2em 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 1em;
+        }
+        footer .footer-content div {
+            margin: 1em;
+        }
+        footer .footer-content div h4 {
+            margin-bottom: 0.5em;
+        }
+        footer .footer-content div ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer .footer-content div ul li {
+            margin: 0.5em 0;
+        }
+        footer .footer-content div ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer .footer-content div ul li a:hover {
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="static/image/icon.jpg" alt="Grow Farmer Logo">
+            <h1>Grow Farmer</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('crop_recommendation')}}">Crop Recommendation</a></li>
+                <li><a href="{{url_for('fert_recommend')}}">Fertilizer Recommendation</a></li>
+                <li><a href="{{url_for('disease_prediction')}}">Plant Disease</a></li>
+                <li><a href="{{url_for('sensor_data')}}">Farmer Community</a></li>
+                <li><a href="{{url_for('sensor_data')}}">Sensor Data</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Oops! Something went wrong.</h1>
+        <p>We encountered an error while processing your request. Please try again later.</p>
+        <a href="{{url_for('crop_recommendation')}}" class="btn">Try Again</a>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: sanjeevlodhi642@gmail.com</li>
+                    <li>Phone: +917983758377</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('about_us')}}">About Us</a></li>
+                    <li><a href="{{url_for('home')}}">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

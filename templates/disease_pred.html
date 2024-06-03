@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation - Grow Farmer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="static/scripts/cities.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+        }
+        header img {
+            width: 50px;
+            height: 50px;
+            margin-right: 1em;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 1em;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+        .container {
+            padding: 2em;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            height:800px;
+        }
+        .form-group {
+            margin: 1em 0;
+            text-align: left;
+        }
+        .form-control {
+            width: 500px;
+            padding: 0.5em;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            color: black;
+            border: none;
+            padding: 0.75em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-info:hover {
+            background-color: #138496;
+            transform: translateY(-2px);
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2em 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 1em;
+        }
+        footer .footer-content div {
+            margin: 1em;
+        }
+        footer .footer-content div h4 {
+            margin-bottom: 0.5em;
+        }
+        footer .footer-content div ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer .footer-content div ul li {
+            margin: 0.5em 0;
+        }
+        footer .footer-content div ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer .footer-content div ul li a:hover {
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="static/image/icon.jpg" alt="Grow Farmer Logo">
+            <h1>Grow Farmer</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('crop_recommendation')}}">Crop Recommendation</a></li>
+                <li><a href="{{url_for('fert_recommend')}}">Fertilizer Recommendation</a></li>
+                <li><a href="{{url_for('disease_prediction')}}">Plant Disease</a></li>
+                <li><a href="{{url_for('sensor_data')}}">Farmer Community</a></li>
+                <li><a href="{{url_for('sensor_data')}}">Sensor Data</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+  <h2 style="text-align: center; margin: 0px; color: black">
+    <b>Find out which disease has been caught by your plant</b>
+  </h2>
+  <br />
+  <br>
+
+<div style="
+    width: 350px;
+    height: 50rem;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 10px 10px;
+    font-weight: bold;
+  ">
+
+
+
+
+  <form class="form-signin" method=post enctype=multipart/form-data>
+
+    <h2 class="h4 mb-3 font-weight-normal"><b>Please Upload The Image</b></h2>
+    <input type="file" name="file" class="form-control-file" id="inputfile" onchange="preview_image(event)" style="font-weight: bold;">
+    <br>
+    <br>
+    <img id="output-image" class="rounded mx-auto d-block" />
+    <button class="btn btn-lg btn-primary btn-block" type="submit" style="font-weight: bold;">Predict</button>
+
+
+  </form>
+</div>
+
+<script type="text/javascript">
+  function preview_image(event) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var output = document.getElementById('output-image')
+      output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
+
+</div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: sanjeevlodhi642@gmail.com</li>
+                    <li>Phone: +917983758377</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('about_us')}}">About Us</a></li>
+                    <li><a href="{{url_for('home')}}">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
